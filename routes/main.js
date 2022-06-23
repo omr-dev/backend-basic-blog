@@ -19,5 +19,11 @@ router.get("/login", (req, res) => {
 router.get("/register", (req, res) => {
   res.render("register");
 });
+router.get("/posts/new", (req, res) => {
+  res.render("add-post");
+});
+router.post("/posts/test", (req, res) => {
+  res.redirect("/");
+});
 
 export default router;
