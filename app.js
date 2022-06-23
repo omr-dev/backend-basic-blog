@@ -2,7 +2,9 @@ import path from "path";
 import express from "express";
 import { engine } from "express-handlebars";
 import mongoose from "mongoose";
+import bodyParser from "body-parser";
 import router from "./routes/main.js";
+import postsRouter from "./routes/posts.js";
 
 const app = express();
 const port = 3000;
@@ -18,8 +20,13 @@ app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", "./views");
 
+//body-parser installation
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 //routing
 app.use("/", router);
+app.use("/posts", postsRouter);
 
 app.listen(port, host, () => {
   console.log(`Server running at http://${host}:${port}/`);
