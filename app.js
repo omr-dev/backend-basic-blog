@@ -20,13 +20,17 @@ app.get("/about", (req, res) => {
   res.render("about");
 });
 app.get("/blog", (req, res) => {
-    res.render("blog");
-  });
-// app.get("/", (req, res) => {
-//   res.sendFile(path.resolve("./site/index.html"));
-// });
-
-
+  res.render("blog");
+});
+app.get("/contact", (req, res) => {
+  res.render("contact");
+});
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+app.get("/register", (req, res) => {
+  res.render("register");
+});
 app.listen(port, host, () => {
   console.log(`Server running at http://${host}:${port}/`);
 });
