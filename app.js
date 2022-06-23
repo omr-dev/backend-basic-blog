@@ -2,6 +2,7 @@ import path from "path";
 import express from "express";
 import { engine } from "express-handlebars";
 import mongoose from "mongoose";
+import router from "./routes/main.js";
 
 const app = express();
 const port = 3000;
@@ -17,24 +18,9 @@ app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", "./views");
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
-app.get("/about", (req, res) => {
-  res.render("about");
-});
-app.get("/blog", (req, res) => {
-  res.render("blog");
-});
-app.get("/contact", (req, res) => {
-  res.render("contact");
-});
-app.get("/login", (req, res) => {
-  res.render("login");
-});
-app.get("/register", (req, res) => {
-  res.render("register");
-});
+//routing
+app.use("/", router);
+
 app.listen(port, host, () => {
   console.log(`Server running at http://${host}:${port}/`);
 });
