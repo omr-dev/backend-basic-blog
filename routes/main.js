@@ -19,6 +19,7 @@ router.get("/blog", (req, res) => {
       console.error(err);
     });
 });
+
 router.get("/contact", (req, res) => {
   res.render("contact");
 });
